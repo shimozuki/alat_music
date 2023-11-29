@@ -108,7 +108,7 @@ class _AboutState extends State<About> {
                             children: [
                               TextSpan(
                                 text:
-                                    'Aplikasi cerita rakyat Sumbawa menjadi wadah digital yang memperkaya warisan budaya Indonesia. Dalam aplikasi ini, pengguna dapat menelusuri beragam kisah legendaris yang menggambarkan kekayaan sejarah dan nilai-nilai yang dipegang teguh oleh masyarakat Sumbawa. Dengan menggunakan teknologi modern, aplikasi ini tidak hanya menyajikan teks naratif, tetapi juga memperkaya pengalaman pembaca dengan elemen multimedia, seperti ilustrasi, audio, dan animasi yang memukau. Pengguna dapat menjelajahi mitos-mitos kuno, seperti kisah tentang Pulau Kenawa yang dipercaya sebagai tempat kelahiran Dewi Anjani, atau legenda mengenai awal mula terbentuknya Gunung Tambora yang terkenal. Melalui aplikasi cerita rakyat Sumbawa, kekayaan kultural dan warisan nenek moyang dapat terus hidup dan dihargai oleh generasi modern, sambil mendukung pelestarian dan penyebaran cerita-cerita yang mengandung makna mendalam bagi masyarakat Sumbawa.',
+                                    'Sumbawa Tradisound adalah sebuah aplikasi inovatif yang dirancang khusus untuk memperkenalkan dan melestarikan kekayaan alat musik tradisional dari pulau Sumbawa. Aplikasi ini merupakan wujud komitmen untuk menjaga warisan budaya melalui teknologi modern, memberikan pengguna pengalaman mendalam dalam memahami dan memainkan alat musik tradisional Sumbawa.',
                                 style: GoogleFonts.plusJakartaSans(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w400,

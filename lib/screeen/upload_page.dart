@@ -410,7 +410,7 @@ class _UploadState extends State<Upload> {
                                     width: 24,
                                     height: 24,
                                     child: const Icon(
-                                      Icons.book,
+                                      Icons.piano,
                                       color: Color.fromARGB(78, 0, 0, 0),
                                     ),
                                   ),
@@ -422,7 +422,7 @@ class _UploadState extends State<Upload> {
                                       const EdgeInsets.fromLTRB(0, 0, 0, 5),
                                   child: TextFormField(
                                     decoration: const InputDecoration.collapsed(
-                                      hintText: "Judul Cerita",
+                                      hintText: "Nama Alat Music",
                                     ),
                                     validator: (value) {
                                       if (value == null ||
