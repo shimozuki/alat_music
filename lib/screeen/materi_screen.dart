@@ -113,8 +113,8 @@ class _MateriState extends State<Materi> {
                             tabs: [
                               Tab(text: 'Sejarah'),
                               Tab(text: 'Tutorial'),
-                              Tab(text: 'Perawatan'),
                               Tab(text: 'Pembuatan'),
+                              Tab(text: 'Perawatan'),
                             ],
                             labelColor: Color(0xd846724d),
                             unselectedLabelColor:
