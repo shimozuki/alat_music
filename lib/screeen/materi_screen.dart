@@ -32,7 +32,7 @@ class _MateriState extends State<Materi> {
           elevation: 0,
         ),
         body: DefaultTabController(
-          length: 3,
+          length: 4,
           child: Container(
             width: double.infinity,
             height: MediaQuery.of(context).size.height * 1.0,
@@ -71,7 +71,7 @@ class _MateriState extends State<Materi> {
                               Container(
                                 margin: EdgeInsets.fromLTRB(0, 0, 0, 5),
                                 child: Text(
-                                  'Machine Learning',
+                                  'Santong Serek',
                                   style: GoogleFonts.poppins(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
@@ -109,10 +109,12 @@ class _MateriState extends State<Materi> {
                                 width: 2.5,
                               ),
                             ),
+                            labelPadding: EdgeInsets.only(left: 0, right: 9),
                             tabs: [
                               Tab(text: 'Sejarah'),
                               Tab(text: 'Tutorial'),
                               Tab(text: 'Perawatan'),
+                              Tab(text: 'Pembuatan'),
                             ],
                             labelColor: Color(0xd846724d),
                             unselectedLabelColor:
@@ -169,6 +171,30 @@ class _MateriState extends State<Materi> {
                                           TextSpan(
                                             text:
                                                 'Berikut adalah langkah-langkah umum tentang cara memainkan gendang. Gendang adalah instrumen musik perkusi yang memiliki berbagai variasi di seluruh dunia, jadi instruksi ini mungkin dapat disesuaikan tergantung pada jenis gendang yang Anda mainkan. Untuk tujuan ini, kita akan berasumsi Anda bermain gendang yang biasa digunakan dalam musik populer atau tradisional.\n \n 1.Posisi Duduk atau Berdiri: \n\n Posisi Anda tergantung pada jenis gendang dan konteks musiknya. Jika Anda menggunakan gendang tradisional yang diletakkan di tanah, Anda mungkin perlu duduk atau berjongkok. Jika Anda menggunakan gendang yang dipasang di bahu (seperti snare drum), Anda akan berdiri atau duduk tegak.',
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Center(
+                                child: SingleChildScrollView(
+                                  child: Container(
+                                    margin: EdgeInsets.fromLTRB(0, 0, 0, MediaQuery.of(context).size.height * 1.0),
+                                    width: double.infinity,
+                                    child: RichText(
+                                      text: TextSpan(
+                                        style: GoogleFonts.plusJakartaSans(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                          height: 1.5,
+                                          color: Color(0xff000000),
+                                        ),
+                                        children: [
+                                          TextSpan(
+                                            text:
+                                                'Merawat gendang dengan baik dapat memperpanjang umur pakainya dan memastikan kualitas suara yang baik. Berikut adalah beberapa langkah singkat untuk merawat gendang: \n\n 1. Bersihkan permukaan gendang secara berkala dengan kain lembut atau sikat yang tidak akan merusak kulit atau permukaan gendang. Hindari penggunaan bahan pembersih yang keras atau berminyak.\n\n2. Pastikan gendang disimpan di lingkungan dengan kelembaban yang stabil. Kelembaban yang rendah atau tinggi berlebihan dapat memengaruhi kulit gendang.\n\n3. Simpan gendang di tempat yang aman dan stabil. Hindari menyimpan gendang di tempat yang terlalu panas, terlalu dingin, atau terpapar langsung sinar matahari.',
                                           ),
                                         ],
                                       ),
