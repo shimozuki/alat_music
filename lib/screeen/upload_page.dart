@@ -10,6 +10,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:music_sumbawa/footer_bar/footer_bar.dart';
 import 'package:music_sumbawa/screeen/about_page.dart';
 import 'package:music_sumbawa/screeen/home_page.dart';
+import 'package:music_sumbawa/screeen/sejarah.dart';
 
 class Upload extends StatefulWidget {
   const Upload({super.key});
@@ -19,24 +20,31 @@ class Upload extends StatefulWidget {
 }
 
 class _UploadState extends State<Upload> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 2;
 
   void _onTabTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-    if (_selectedIndex == 2) {
+    if (_selectedIndex == 1) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const About()),
+        MaterialPageRoute(builder: (context) => const Sejarah()),
       );
     } else if (_selectedIndex == 0) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const Home()),
       );
-    } 
+    }
+    else if (_selectedIndex == 3) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const About()),
+      );
+    }
   }
+
   final _formKey = GlobalKey<FormState>();
 
   XFile? image;
@@ -128,7 +136,7 @@ class _UploadState extends State<Upload> {
             ),
           );
         });
-        }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -175,7 +183,7 @@ class _UploadState extends State<Upload> {
                         height: 1.1725,
                         color: Color(0xff000000),
                       ),
-                       textAlign: TextAlign.justify,
+                      textAlign: TextAlign.justify,
                     ),
                   ),
                   Container(
@@ -286,7 +294,7 @@ class _UploadState extends State<Upload> {
                             ),
                           ),
                         ),
-                         Container(
+                        Container(
                           margin: const EdgeInsets.fromLTRB(0, 0, 0, 18),
                           padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
                           width: double.infinity,
@@ -441,7 +449,7 @@ class _UploadState extends State<Upload> {
                         ),
                         Container(
                           margin: const EdgeInsets.fromLTRB(0, 0, 0, 18),
-                          padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                          padding: const EdgeInsets.fromLTRB(15, 0, 15, 10),
                           width: double.infinity,
                           height: 50,
                           decoration: BoxDecoration(
@@ -457,7 +465,7 @@ class _UploadState extends State<Upload> {
                                 Flexible(
                                   child: Container(
                                     margin: const EdgeInsets.fromLTRB(
-                                        0, 2.5, 399, 0),
+                                        0, 14, 399, 0),
                                     width: 24,
                                     height: 24,
                                     child: const Icon(

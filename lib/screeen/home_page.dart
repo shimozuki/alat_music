@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:music_sumbawa/footer_bar/footer_bar.dart';
 import 'package:music_sumbawa/screeen/about_page.dart';
 import 'package:music_sumbawa/screeen/materi_screen.dart';
+import 'package:music_sumbawa/screeen/sejarah.dart';
 import 'package:music_sumbawa/screeen/upload_page.dart';
 
 class Home extends StatefulWidget {
@@ -23,9 +24,14 @@ class _HomeState extends State<Home> {
     if (_selectedIndex == 1) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const Upload()),
+        MaterialPageRoute(builder: (context) => const Sejarah()),
       );
     } else if (_selectedIndex == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Upload()),
+      );
+    } else if (_selectedIndex == 3) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const About()),
@@ -88,7 +94,8 @@ class _HomeState extends State<Home> {
                         });
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const Materi()),
+                          MaterialPageRoute(
+                              builder: (context) => const Materi()),
                         );
                       },
                       child: Container(

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:music_sumbawa/footer_bar/footer_bar.dart';
 import 'package:music_sumbawa/screeen/home_page.dart';
+import 'package:music_sumbawa/screeen/sejarah.dart';
 import 'package:music_sumbawa/screeen/upload_page.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,7 +22,7 @@ class About extends StatefulWidget {
 
 class _AboutState extends State<About> {
   bool isAddButtonClicked = false;
-  int _selectedIndex = 2;
+  int _selectedIndex = 3;
 
   void _onTabTapped(int index) {
     setState(() {
@@ -33,6 +34,11 @@ class _AboutState extends State<About> {
         MaterialPageRoute(builder: (context) => const Home()),
       );
     } else if (_selectedIndex == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const Sejarah()),
+      );
+    } else if (_selectedIndex == 2) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const Upload()),

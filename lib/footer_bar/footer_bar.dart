@@ -29,6 +29,10 @@ class MyBottomNavigationBar extends StatelessWidget {
             icon: Icon(Icons.home_outlined),
             label: 'Home',
           ),
+           BottomNavigationBarItem(
+            icon: Icon(Icons.receipt_long_outlined),
+            label: 'Sejarah',
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.book_outlined),
             label: 'Upload',
