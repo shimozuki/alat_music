@@ -448,6 +448,57 @@ class _UploadState extends State<Upload> {
                             color: const Color(0x11000000),
                             borderRadius: BorderRadius.circular(50),
                           ),
+                          child: Container(
+                            width: 134,
+                            height: double.infinity,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Flexible(
+                                  child: Container(
+                                    margin: const EdgeInsets.fromLTRB(
+                                        0, 2.5, 399, 0),
+                                    width: 24,
+                                    height: 24,
+                                    child: const Icon(
+                                      Icons.attach_file,
+                                      color: Color.fromARGB(78, 0, 0, 0),
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  margin:
+                                      const EdgeInsets.fromLTRB(34, 0, 0, 0),
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 0, 5),
+                                  child: TextFormField(
+                                    decoration: const InputDecoration.collapsed(
+                                      hintText: "Link Vidio (youtube)",
+                                    ),
+                                    validator: (value) {
+                                      if (value == null ||
+                                          value.trim().isEmpty) {
+                                        return 'Please enter some text';
+                                      }
+                                      return null;
+                                    },
+                                    // onChanged: (value) =>
+                                    //     _nama_perusahaan = value,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.fromLTRB(0, 0, 0, 18),
+                          padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
+                          width: double.infinity,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: const Color(0x11000000),
+                            borderRadius: BorderRadius.circular(50),
+                          ),
                           child: GestureDetector(
                             onTap: _pickFile,
                             child: Row(
