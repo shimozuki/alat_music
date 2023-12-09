@@ -74,7 +74,7 @@ class _SejarahState extends State<Sejarah> {
                   margin: EdgeInsets.fromLTRB(15, 0, 1, 29),
                   child: Text(
                     'Sejarah Umum Alat Music Sumbawa',
-                    style: GoogleFonts.playfairDisplay(
+                    style: GoogleFonts.poppins(
                       fontSize: 28,
                       fontWeight: FontWeight.w500,
                       height: 1.3325,
@@ -102,7 +102,7 @@ class _SejarahState extends State<Sejarah> {
                         child: Text(
                           'Alat musik tertua yang pernah ditemukan adalah Divje Babe Flute dari Gua Divje Babe di Slovenia. Alat musik ini diperkirakan berasal dari 43.000–82.000 tahun yang lalu. Alat musik ini terbuat dari tulang paha beruang muda dan konon digunakan oleh manusia Neanderthal. Musik nusantara adalah musik yang berkembang dengan mencerminkan identitas Indonesia, baik dari segi bahasa maupun karakter melodinya. Sudah lama sejak awal sejarah musik Indonesia. Ada banyak tahapan dari Indonesia ke periode modern, dari era Hindu-Budha, untuk memantau perkembangan musik di Indonesia.',
                           textAlign: TextAlign.center,
-                          style: GoogleFonts.playfairDisplay(
+                          style: GoogleFonts.poppins(
                             fontSize: 14,
                             fontWeight: FontWeight.w400,
                             height: 1.7142857143,
