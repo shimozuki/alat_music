@@ -15,15 +15,15 @@ class MyBottomNavigationBar extends StatelessWidget {
           topLeft: Radius.circular(10),
           topRight: Radius.circular(10),
         ),
-        color: Color(0xd846724d),
+        color: Color(0xfffbd71e),
       ),
       child: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         onTap: onTabTapped,
         currentIndex: currentIndex,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Color.fromARGB(255, 179, 178, 178),
-        backgroundColor: Color(0xd846724d),
+        selectedItemColor: Color.fromARGB(255, 5, 5, 5),
+        unselectedItemColor: Color.fromARGB(255, 97, 96, 96),
+        backgroundColor: Color(0xfffbd71e),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),

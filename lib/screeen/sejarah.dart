@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:music_sumbawa/Controller/sejarahumum_controller.dart';
 import 'package:music_sumbawa/footer_bar/footer_bar.dart';
+import 'package:music_sumbawa/model/sejarahumum_model.dart';
 import 'package:music_sumbawa/screeen/about_page.dart';
 import 'package:music_sumbawa/screeen/home_page.dart';
 import 'package:music_sumbawa/screeen/upload_page.dart';
@@ -15,6 +17,7 @@ class Sejarah extends StatefulWidget {
 
 class _SejarahState extends State<Sejarah> {
    int _selectedIndex = 1;
+   List<SejarahUmumModel> sejarahUmumList = [];
 
   void _onTabTapped(int index) {
     setState(() {
@@ -38,6 +41,24 @@ class _SejarahState extends State<Sejarah> {
       );
     }
   }
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchSejarahUmumData();
+  }
+
+  Future<void> _fetchSejarahUmumData() async {
+    try {
+      final data = await SejarahUmumController.getSejarahUmumData();
+      setState(() {
+        sejarahUmumList = data;
+      });
+    } catch (e) {
+      // Handle error
+      print('Error fetching Sejarah Umum data: $e');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -55,7 +76,7 @@ class _SejarahState extends State<Sejarah> {
           ),
           backgroundColor: Color(0xffffffff),
           elevation: 0,
-          iconTheme: IconThemeData(color: Color(0xFF9CCC65)),
+          iconTheme: IconThemeData(color: Color(0xfffbd71e)),
           centerTitle: true, // Membuat teks menjadi di tengah
         ),
         body: SingleChildScrollView(
@@ -73,7 +94,7 @@ class _SejarahState extends State<Sejarah> {
                   // chapteroneaEX (10:1169)
                   margin: EdgeInsets.fromLTRB(15, 0, 1, 29),
                   child: Text(
-                    'Sejarah Umum Alat Music Sumbawa',
+                    'Sejarah Umum Alat Musik Sumbawa',
                     style: GoogleFonts.poppins(
                       fontSize: 28,
                       fontWeight: FontWeight.w500,
@@ -100,7 +121,9 @@ class _SejarahState extends State<Sejarah> {
                           maxWidth: 318,
                         ),
                         child: Text(
-                          'Alat musik tertua yang pernah ditemukan adalah Divje Babe Flute dari Gua Divje Babe di Slovenia. Alat musik ini diperkirakan berasal dari 43.000–82.000 tahun yang lalu. Alat musik ini terbuat dari tulang paha beruang muda dan konon digunakan oleh manusia Neanderthal. Musik nusantara adalah musik yang berkembang dengan mencerminkan identitas Indonesia, baik dari segi bahasa maupun karakter melodinya. Sudah lama sejak awal sejarah musik Indonesia. Ada banyak tahapan dari Indonesia ke periode modern, dari era Hindu-Budha, untuk memantau perkembangan musik di Indonesia.',
+                          sejarahUmumList.isNotEmpty
+                              ? sejarahUmumList[0].description
+                              : 'Loading...',
                           textAlign: TextAlign.center,
                           style: GoogleFonts.poppins(
                             fontSize: 14,

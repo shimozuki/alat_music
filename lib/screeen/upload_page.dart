@@ -7,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:music_sumbawa/Controller/upload_controller.dart';
 import 'package:music_sumbawa/footer_bar/footer_bar.dart';
 import 'package:music_sumbawa/screeen/about_page.dart';
 import 'package:music_sumbawa/screeen/home_page.dart';
@@ -36,8 +37,7 @@ class _UploadState extends State<Upload> {
         context,
         MaterialPageRoute(builder: (context) => const Home()),
       );
-    }
-    else if (_selectedIndex == 3) {
+    } else if (_selectedIndex == 3) {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const About()),
@@ -51,39 +51,23 @@ class _UploadState extends State<Upload> {
 
   final ImagePicker picker = ImagePicker();
 
-  // String? _selectedFilePath;
-
-  // Future<void> _pickFile() async {
-  //   FilePickerResult? result = await FilePicker.platform.pickFiles(
-  //     type: FileType.custom,
-  //     allowedExtensions: [
-  //       'pdf',
-  //       'doc',
-  //       'docx'
-  //     ], // Add more extensions if needed
-  //   );
-
-  //   if (result != null) {
-  //     setState(() {
-  //       _selectedFilePath = result.files.single.path;
-  //     });
-  //   }
-  // }
-
   String? _selectedFilePath;
-
   Future<void> _pickFile() async {
-    final imagePicker = ImagePicker();
-    final XFile? result =
-        await imagePicker.pickImage(source: ImageSource.gallery);
-
+    FilePickerResult? result =
+        await FilePicker.platform.pickFiles(type: FileType.any);
     if (result != null) {
       setState(() {
-        _selectedFilePath = result.path;
+        _selectedFilePath = result.files.single.path!;
+        print("file excel : ${_selectedFilePath}");
       });
     }
   }
 
+  String? _name;
+  String? _whatsapp;
+  String? _email;
+  String? _namaalatmusik;
+  String? _link;
   //we can upload image from camera or from gallery based on parameter
   Future getImage(ImageSource media) async {
     var img = await picker.pickImage(source: media);
@@ -137,6 +121,47 @@ class _UploadState extends State<Upload> {
           );
         });
   }
+
+Future<void> _submitData() async {
+  if (_formKey.currentState!.validate()) {
+    _formKey.currentState!.save();
+
+    // Check for null values before calling uploadData
+    if (_name != null &&
+        _whatsapp != null &&
+        _email != null &&
+        _namaalatmusik != null &&
+        _link != null &&
+        image != null) {
+      await UploadController().uploadData(
+        nama: _name!,
+        whatsapp: _whatsapp!,
+        email: _email!,
+        namaAlat: _namaalatmusik!,
+        imagePath: image!.path,
+        selectFile: _selectedFilePath ?? "",
+        link: _link!,
+      );
+
+      Fluttertoast.showToast(
+        msg: 'Data berhasil diunggah',
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+      );
+
+      _formKey.currentState!.reset();
+      setState(() {
+        image = null;
+        _selectedFilePath = null;
+      });
+    } else {
+      print('One or more variables are null.${_name}, ${_email}');
+    }
+  }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -236,58 +261,7 @@ class _UploadState extends State<Upload> {
                                       }
                                       return null;
                                     },
-                                    // onChanged: (value) => _name = value,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.fromLTRB(0, 0, 0, 18),
-                          padding: const EdgeInsets.fromLTRB(15, 10, 15, 10),
-                          width: double.infinity,
-                          height: 52,
-                          decoration: BoxDecoration(
-                            color: const Color(0x11000000),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
-                          // ignore: sized_box_for_whitespace
-                          child: Container(
-                            width: 72,
-                            height: double.infinity,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Flexible(
-                                  child: Container(
-                                    margin: const EdgeInsets.fromLTRB(
-                                        0, 2.5, 399, 0),
-                                    width: 24,
-                                    height: 24,
-                                    child: const Icon(
-                                      Icons.room,
-                                      color: Color.fromARGB(78, 0, 0, 0),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  margin:
-                                      const EdgeInsets.fromLTRB(34, 0, 0, 0),
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 0, 5),
-                                  child: TextFormField(
-                                    decoration: const InputDecoration.collapsed(
-                                      hintText: "Alamat",
-                                    ),
-                                    validator: (value) {
-                                      if (value == null ||
-                                          value.trim().isEmpty) {
-                                        return 'Please enter some text';
-                                      }
-                                      return null;
-                                    },
-                                    // onChanged: (value) => _name = value,
+                                    onChanged: (value) => _name = value,
                                   ),
                                 ),
                               ],
@@ -338,7 +312,7 @@ class _UploadState extends State<Upload> {
                                       }
                                       return null;
                                     },
-                                    // onChanged: (value) => _name = value,
+                                    onChanged: (value) => _whatsapp = value,
                                   ),
                                 ),
                               ],
@@ -389,7 +363,7 @@ class _UploadState extends State<Upload> {
                                       }
                                       return null;
                                     },
-                                    // onChanged: (value) => _name = value,
+                                    onChanged: (value) => _email = value,
                                   ),
                                 ),
                               ],
@@ -439,8 +413,8 @@ class _UploadState extends State<Upload> {
                                       }
                                       return null;
                                     },
-                                    // onChanged: (value) =>
-                                    //     _nama_perusahaan = value,
+                                    onChanged: (value) =>
+                                        _namaalatmusik = value,
                                   ),
                                 ),
                               ],
@@ -490,8 +464,7 @@ class _UploadState extends State<Upload> {
                                       }
                                       return null;
                                     },
-                                    // onChanged: (value) =>
-                                    //     _nama_perusahaan = value,
+                                    onChanged: (value) => _link = value,
                                   ),
                                 ),
                               ],
@@ -594,19 +567,13 @@ class _UploadState extends State<Upload> {
                           ),
                         ),
                         TextButton(
-                          onPressed: () {
-                            // if (_isChecked &&
-                            //     _formKey.currentState!.validate()) {
-                            //   _formKey.currentState!.save();
-                            //   _registerUser();
-                            // }
-                          },
+                          onPressed: _submitData,
                           child: Container(
                             margin: const EdgeInsets.only(top: 10),
                             width: double.infinity,
                             height: 46,
                             decoration: BoxDecoration(
-                              color: const Color(0xd846724d),
+                              color: const Color(0xfffbd71e),
                               borderRadius: BorderRadius.circular(50),
                             ),
                             child: Center(
@@ -618,7 +585,7 @@ class _UploadState extends State<Upload> {
                                     fontSize: 14,
                                     fontWeight: FontWeight.w700,
                                     height: 1.1725,
-                                    color: const Color(0xffffffff),
+                                    color: Color.fromARGB(255, 5, 5, 5),
                                   ),
                                 ),
                               ),

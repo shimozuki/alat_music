@@ -19,20 +19,20 @@ class _SplashState extends State<Splash> {
           width: double.infinity,
           height: MediaQuery.of(context).size.height * 1.0,
           decoration: BoxDecoration(
-            color: Color(0xfff5f5f5),
+            color: Color(0xffffffff),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 31, 19),
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 19),
                 child: Text(
-                  'Welcome',
+                  'Ragam Alat Musik Sumbawa',
                   style: GoogleFonts.poppins(
-                    fontSize: 56,
+                    fontSize: 30,
                     fontWeight: FontWeight.w600,
                     height: 1.5,
-                    color: Color(0xff2d6936),
+                    color: Color.fromARGB(255, 5, 5, 5),
                   ),
                 ),
               ),
@@ -43,20 +43,20 @@ class _SplashState extends State<Splash> {
                   maxWidth: 300,
                 ),
                 child: Text(
-                  'we’re glad that that you are here',
+                  'Ragam Alat Musik Khas Sumbawa Besar Nusta Tenggara Barat',
                   style: GoogleFonts.poppins(
-                    fontSize: 24,
+                    fontSize: 14,
                     fontWeight: FontWeight.w400,
                     height: 1.2125,
-                    color: Color(0xff2d6936),
+                    color: Color.fromARGB(255, 5, 5, 5),
                   ),
                 ),
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(40, 0, 0, 106),
-                width: 275,
-                height: 308,
-                child: Image.asset('assets/Composer-bro.png'),
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 106),
+                width: 675,
+                height: 328,
+                child: Image.asset('assets/Removal-151.png'),
               ),
               Container(
                 margin: const EdgeInsets.fromLTRB(50, 0, 50.89, 39),
@@ -72,7 +72,7 @@ class _SplashState extends State<Splash> {
                     width: double.infinity,
                     height: 46,
                     decoration: const BoxDecoration(
-                      color: Color(0xd846724d),
+                      color: Color(0xfffbd71e),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50),
                         topRight: Radius.circular(50),
@@ -89,7 +89,7 @@ class _SplashState extends State<Splash> {
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                             height: 1.1725,
-                            color: const Color(0xffffffff),
+                            color: Color.fromARGB(255, 5, 5, 5),
                           ),
                         ),
                       ),

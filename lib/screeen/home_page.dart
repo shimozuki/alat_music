@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:music_sumbawa/Controller/music_controller.dart';
 import 'package:music_sumbawa/footer_bar/footer_bar.dart';
+import 'package:music_sumbawa/model/music_model.dart';
 import 'package:music_sumbawa/screeen/about_page.dart';
 import 'package:music_sumbawa/screeen/materi_screen.dart';
 import 'package:music_sumbawa/screeen/sejarah.dart';
@@ -16,6 +20,27 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int selectedTabIndex = -1;
   int _selectedIndex = 0;
+  List<Music> musicList = [];
+  late MusicController musicController;
+
+  @override
+  void initState() {
+    super.initState();
+    musicController = MusicController('https://musik-tradisionalsumbawa.com/api/get-all');
+    fetchData();
+  }
+
+  Future<void> fetchData() async {
+    try {
+      List<Music> fetchedMusicList = await musicController.getAllMusic();
+      setState(() {
+        musicList = fetchedMusicList;
+      });
+    } catch (error) {
+      print('Error fetching data: $error');
+      // Handle error
+    }
+  }
 
   void _onTabTapped(int index) {
     setState(() {
@@ -45,7 +70,7 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Alat Music Sumbawa',
+            'Alat Musik Sumbawa',
             style: GoogleFonts.poppins(
               fontSize: 20,
               fontWeight: FontWeight.w500,
@@ -80,8 +105,9 @@ class _HomeState extends State<Home> {
               Expanded(
                 child: ListView.builder(
                   scrollDirection: Axis.vertical,
-                  itemCount: 12,
+                  itemCount: musicList.length,
                   itemBuilder: (context, index) {
+                    Music music = musicList[index];
                     return InkWell(
                       onTap: () {
                         setState(() {
@@ -95,7 +121,7 @@ class _HomeState extends State<Home> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const Materi()),
+                              builder: (context) => Materi(id: music.id)),
                         );
                       },
                       child: Container(
@@ -106,7 +132,7 @@ class _HomeState extends State<Home> {
                         decoration: BoxDecoration(
                           border: Border.all(color: Color(0xffdcdde0)),
                           color: selectedTabIndex == index
-                              ? Color(0xd846724d)
+                              ? Color(0xfffbd71e)
                               : Color(0xffffffff),
                           borderRadius: BorderRadius.circular(20),
                           boxShadow: [
@@ -128,7 +154,7 @@ class _HomeState extends State<Home> {
                               decoration: BoxDecoration(
                                 image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: AssetImage('assets/gendang.jpg'),
+                                  image: NetworkImage('https://musik-tradisionalsumbawa.com/${music.image}'),
                                 ),
                               ),
                             ),
@@ -145,14 +171,12 @@ class _HomeState extends State<Home> {
                                         width: 150,
                                         height: 60,
                                         child: Text(
-                                          'Santong Srek',
+                                          '${music.namaAlat}',
                                           style: GoogleFonts.poppins(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w500,
                                             height: 2.7272727273,
-                                            color: selectedTabIndex == index
-                                                ? Color(0xffffffff)
-                                                : Color(0xff201a25),
+                                            color:  Color(0xff201a25),
                                           ),
                                         ),
                                       ),
@@ -167,14 +191,12 @@ class _HomeState extends State<Home> {
                                         width: 137,
                                         height: 60,
                                         child: Text(
-                                          'Content Creator',
+                                          '${music.author.name}',
                                           style: GoogleFonts.poppins(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w400,
                                             height: 5,
-                                            color: selectedTabIndex == index
-                                                ? Color(0xffffffff)
-                                                : Color(0xff201a25),
+                                            color:  Color(0xff201a25),
                                           ),
                                         ),
                                       ),
@@ -189,14 +211,12 @@ class _HomeState extends State<Home> {
                                         width: 205,
                                         height: 60,
                                         child: Text(
-                                          '45 Riview',
+                                          '1 Views',
                                           style: GoogleFonts.poppins(
                                             fontSize: 16,
                                             fontWeight: FontWeight.w400,
                                             height: 3.75,
-                                            color: selectedTabIndex == index
-                                                ? Color(0xffffffff)
-                                                : Color(0xff201a25),
+                                            color:  Color(0xff201a25),
                                           ),
                                         ),
                                       ),
